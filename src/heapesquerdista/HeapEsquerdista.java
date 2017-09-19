@@ -9,6 +9,7 @@ package heapesquerdista;
  *
  * @author gabrielsantos
  */
+// Exercicio 2A
 public class HeapEsquerdista {
     private NoHeapEsquerdista raiz;
 
@@ -37,7 +38,8 @@ public class HeapEsquerdista {
             return;
         this.raiz = criaHeap(raiz, k.raiz);
     }
-
+    
+    // Exercicio 2B
     private NoHeapEsquerdista criaHeap(NoHeapEsquerdista x, NoHeapEsquerdista y) {
        if(x == null)
            return y;
