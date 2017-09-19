@@ -51,9 +51,41 @@ public class HeapEsquerdista {
        
        x.setDir(criaHeap(x.getDir(), y)); 
        
-       
+       if(x.getEsq() == null){
+           x.setEsq(x.getDir());
+           x.setDir(null);
+       }else{
+           if(x.getEsq().getValor() < x.getDir().getValor()){
+               NoHeapEsquerdista aux = x.getEsq();
+               x.setEsq(x.getDir());
+               x.setDir(aux);
+           }
+           x.setValor(x.getDir().getValor()+1);
+       }
        return x;
+    }  
+    
+    public int deletaMininoValor(){
+        if(verificaRaizVaza()){
+            return -1;
+        }
+        int min = this.raiz.getValor();
+        raiz = criaHeap(raiz.getEsq(), raiz.getDir());
+        return min;
     }
     
+    public void imprime(){
+        imprime(raiz);
+        System.out.println();
+    }
+
+    private void imprime(NoHeapEsquerdista raiz) {
+        if(raiz != null){
+            imprime(raiz.getEsq());
+            System.out.print(raiz.getElemento() + "");
+            imprime(raiz.getDir());
+        }
+    }
     
 }
+
